@@ -31,3 +31,23 @@ jobs:
               with:
                   name: dist
                   path: dist/
+
+    release:
+        name: CD
+        needs: build
+        runs-on: ubuntu-latest
+        environment: dev
+        
+        steps:
+            - name: Download artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: dist
+                  path: dist/
+            - name: Deploy-Dev
+              uses: cloudflare/wrangler-action@v3
+              with:
+                  apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+                  command: deploy dist/practice4/index.js --name divine-recipe-07e0 --compatibility-date 2024-06-28 --compatibility-flags=nodejs_compat --assets dir dist/practice4/client
+
