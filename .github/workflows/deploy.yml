@@ -49,5 +49,5 @@ jobs:
               with:
                   apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
                   accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-                  command: deploy dist/practice4/index.js --name divine-recipe-07e0 --compatibility-date 2024-06-28 --compatibility-flags=nodejs_compat --assets dir dist/practice4/client
+                  command: deploy dist/practice4/index.js --name divine-recipe-07e0 --compatibility-date 2024-06-28 --compatibility-flags=nodejs_compat --assets dist/practice4/client
 
